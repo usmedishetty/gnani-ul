@@ -1,0 +1,80 @@
+{
+  "$schema": "https://antigravity.google.com/schemas/token-budget-v1.json",
+  "version": "1.0.0",
+  "name": "Antigravity-ECC Token Budget & Context Allocation",
+  "limits": {
+    "maxContextWindowTokens": 1000000,
+    "compactionThresholdTokens": 135000,
+    "criticalAlertTokens": 180000,
+    "perTurnSoftCapTokens": 8000
+  },
+  "lifecycleStageAllocations": {
+    "research": {
+      "budgetTokens": 20000,
+      "recommendedModel": "gemini-2.5-flash",
+      "summaryTargetTokens": 2500
+    },
+    "plan": {
+      "budgetTokens": 15000,
+      "recommendedModel": "gemini-2.5-pro",
+      "summaryTargetTokens": 2000
+    },
+    "test": {
+      "budgetTokens": 20000,
+      "recommendedModel": "gemini-2.5-flash",
+      "summaryTargetTokens": 1500
+    },
+    "implement": {
+      "budgetTokens": 40000,
+      "recommendedModel": "gemini-2.5-pro",
+      "summaryTargetTokens": 4000
+    },
+    "review": {
+      "budgetTokens": 20000,
+      "recommendedModel": "gemini-2.5-pro",
+      "summaryTargetTokens": 2000
+    },
+    "verify": {
+      "budgetTokens": 10000,
+      "recommendedModel": "gemini-2.5-flash",
+      "summaryTargetTokens": 1000
+    },
+    "remember": {
+      "budgetTokens": 5000,
+      "recommendedModel": "gemini-2.5-flash",
+      "summaryTargetTokens": 800
+    },
+    "improve": {
+      "budgetTokens": 5000,
+      "recommendedModel": "gemini-2.5-flash",
+      "summaryTargetTokens": 800
+    }
+  },
+  "compactionPolicy": {
+    "strategy": "hybrid-eviction-and-distillation",
+    "triggerHook": "OnTokenThreshold",
+    "threshold": 135000,
+    "actions": [
+      "flush_short_term_logs_to_sqlite",
+      "generate_compaction_artifact",
+      "purge_raw_tool_stdouts",
+      "pin_active_plan_and_test_contracts",
+      "notify_developer"
+    ]
+  },
+  "modelSelectionMatrix": {
+    "lowComplexity": {
+      "model": "gemini-2.5-flash",
+      "useCases": ["test execution", "doc updates", "linting", "status reports", "syntax fixes"]
+    },
+    "standardEngineering": {
+      "model": "gemini-2.5-flash",
+      "useCases": ["feature implementation", "refactoring", "unit test writing", "bug fixing"]
+    },
+    "complexArchitecture": {
+      "model": "gemini-2.5-pro",
+      "useCases": ["system design", "security audit", "concurrency analysis", "spec authoring", "root-cause debugging"]
+    }
+  }
+}
+
