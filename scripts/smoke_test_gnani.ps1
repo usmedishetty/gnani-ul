@@ -11,3 +11,4 @@ if ($WaClip) { $argsList += "--wa-clip"; $argsList += $WaClip }
 if ($Phrase) { $argsList += "--phrase"; $argsList += $Phrase }
 
 python @argsList
+

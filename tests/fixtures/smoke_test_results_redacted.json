@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-11-04T10:11:45Z",
+  "base_url": "https://api.vachana.ai",
+  "results": {
+    "stt_voice_clip": {
+      "success": true,
+      "status_code": 200,
+      "latency_ms": 1417.02,
+      "payload_bytes": 486,
+      "response": {
+        "success": true,
+        "request_id": "01a1a60b-1852-7564-a409-ffda4a9faedf",
+        "transcript": "\u092e\u0948\u0902 \u092f\u0947 record \u0915\u0930 \u0930\u0939\u093e \u0939\u0942\u0901 \u0915\u094d\u092f\u094b\u0902\u0915\u093f \u092e\u0941\u091d\u0947 test \u0915\u0930\u0928\u093e \u0939\u0948 \u091c\u094d\u091e\u093e\u0928\u0940 AI \u0915\u093e voice recording \u0915\u0948\u0938\u0947 \u0939\u094b\u0924\u093e \u0939\u0948 speech to text\u0964 \u092e\u0948\u0902 \u092f\u0947 anti gravity \u092e\u0947\u0902 \u0921\u093e\u0932\u0942\u0902\u0917\u093e\u0964",
+        "model": "prisma-v3.0",
+        "processing_time": 0.600222110748291,
+        "end_to_end_latency": 0.6474874019622803,
+        "detected_language_code": "hi-IN"
+      },
+      "file_used": "my_voice.wav"
+    },
+    "stt_whatsapp_note": {
+      "success": true,
+      "status_code": 200,
+      "latency_ms": 1394.79,
+      "payload_bytes": 512,
+      "response": {
+        "success": true,
+        "request_id": "01a1a60b-1d8f-7d5e-a6b6-44456e99009d",
+        "transcript": "\u092f\u0947 \u092e\u0948\u0902 \u0907\u0938\u0940\u0932\u093f\u090f record \u0915\u0930 \u0930\u0939\u093e \u0939\u0942\u0901 \u0915\u094d\u092f\u094b\u0902\u0915\u093f \u092e\u0941\u091d\u0947 \u0905\u092d\u0940 test \u0915\u0930\u0928\u093e \u0939\u0948 anti gravity \u092a\u0930\u0964 \u092f\u0947 \u092e\u0948\u0902 \u091c\u094d\u091e\u093e\u0928\u0940 AI project \u0915\u0947 \u0932\u093f\u090f \u092c\u0928\u093e \u0930\u0939\u093e \u0939\u0942\u0901\u0964 \u092c\u0924\u093e\u0928\u093e \u0915\u0948\u0938\u093e \u0939\u0948?",
+        "model": "prisma-v3.0",
+        "processing_time": 0.8051867485046387,
+        "end_to_end_latency": 0.8062517642974854,
+        "detected_language_code": "hi-IN"
+      },
+      "file_used": "whatsapp_voice.ogg"
+    },
+    "tts_synthesis": {
+      "success": true,
+      "status_code": 200,
+      "latency_ms": 1497.61,
+      "bytes": 239948,
+      "output_ogg": "live_tts_waveform.ogg",
+      "properties": {
+        "format": "ogg",
+        "channels": 1,
+        "sample_rate": null,
+        "duration_sec": null,
+        "codec": "opus",
+        "raw_stream": "Stream #0:0: Audio: opus, 48000 Hz, mono, fltp"
+      }
+    }
+  }
+}

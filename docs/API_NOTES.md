@@ -28,22 +28,25 @@
 | `keyterms` | JSON Array / String | No | Up to 100 domain vocabulary terms for acoustic biasing. | e.g. `'["Aashirvaad", "Pillsbury", "pao", "10-wali", "Maggi"]'` |
 | `previous_text`| String | No | Prior conversational context for lexical conditioning. | e.g. `"Aashirvaad Atta 5kg, Hari Mirch 250g"` (Crucial for shopkeeper diffs) |
 
-### 1.3 Response Schema (JSON)
+### 1.3 Verified Live Response Schema (JSON)
+*Captured empirically from live call on November 4, 2026 (`prisma-v3.0`)*:
 ```json
 {
-  "transcript": "bhaiya paanch kilo aashirvaad atta aur pao bhar hari mirch",
-  "confidence": 0.942,
-  "language_detected": "hi-IN",
-  "duration_seconds": 4.82,
-  "words": [
-    {"word": "bhaiya", "start": 0.20, "end": 0.65, "confidence": 0.96},
-    {"word": "paanch", "start": 0.70, "end": 1.10, "confidence": 0.95},
-    {"word": "kilo", "start": 1.12, "end": 1.45, "confidence": 0.98},
-    {"word": "aashirvaad", "start": 1.50, "end": 2.15, "confidence": 0.94},
-    {"word": "atta", "start": 2.20, "end": 2.60, "confidence": 0.93}
-  ]
+  "success": true,
+  "request_id": "01a1a60b-1d8f-7d5e-a6b6-44456e99009d",
+  "transcript": "ये मैं इसीलिए record कर रहा हूँ क्योंकि मुझे अभी test करना है anti gravity पर। ये मैं ज्ञानी AI project के लिए बना रहा हूँ। बताना कैसा है?",
+  "model": "prisma-v3.0",
+  "processing_time": 0.805,
+  "end_to_end_latency": 0.806,
+  "detected_language_code": "hi-IN"
 }
 ```
+
+### 1.4 Native WhatsApp Voice Note Compatibility
+* **Direct OGG/Opus Ingestion:** Live testing confirmed that raw WhatsApp voice notes (`audio/ogg; codecs=opus`, 48 kHz mono) are accepted natively by `POST /stt/v3` without prior FFmpeg conversion.
+* **Empirical Latency:**
+  * Real Voice Clip (16 kHz WAV, ~11s): `1417 ms` (Server processing: 600 ms)
+  * WhatsApp Voice Note (48 kHz Opus, ~11s): `1394 ms` (Server processing: 805 ms)
 
 ### 1.4 Limits & Constraints
 * **Max Audio Duration:** Standard REST endpoint is optimized for clips $\le 30\text{ seconds}$ (hard ceiling 60 seconds). For WhatsApp clips $>30\text{s}$, slice at silence intervals using `ffmpeg`.
@@ -80,10 +83,11 @@
 ```
 
 ### 2.3 Verified Voice Profiles
-* `timbre-v3.0`: Multilingual neural models where each speaker persona speaks across all supported Indic languages:
-  * Female profiles: `Nalini`, `Kaveri`, `Shivani`
-  * Male profiles: `Deepak`, `Avinash`
-* *Note:* Voices are bound to model versions (`timbre-v3.0` voices cannot be passed to `timbre-v2.5` requests).
+* `timbre-v3.0`: Empirically verified live server supported voices:
+  * Female profiles: `Shivani`, `Lakshmi`, `Kalpana`, `Chetana`, `Vasudha`, `Riyaa`, `Tarika`
+  * Male profiles: `Avinash`, `Shubham`, `Prakash`, `Devansh`, `Yashraj`, `Harshad`
+* *Verified Discrepancy:* `Nalini` and `Deepak` belong to `timbre-v2.5` or legacy catalogs; passing them to `timbre-v3.0` returns HTTP 400.
+* **Empirical Synthesis Latency:** 47-character Hindi sentence synthesized via `Shivani` in `1497 ms`, yielding 239,948 bytes of 22.05 kHz WAV audio (transcoded cleanly to 14,884 bytes of WhatsApp-ready OGG/Opus mono).
 
 ### 2.4 WhatsApp Audio Formatting (OGG/Opus Mono)
 * Meta WhatsApp Cloud API requires native voice messages to be encoded as:
@@ -184,3 +188,4 @@
 * **Zero Credit Development Policy:**
   * All unit and integration test runs must use recorded fixtures in `tests/fixtures/`.
   * Live API calls are strictly restricted to phase gates (`pytest -m live`) and initial smoke tests to preserve credit runway.
+

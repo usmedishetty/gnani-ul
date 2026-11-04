@@ -254,7 +254,7 @@ def test_tts_live(text_phrase: str) -> dict:
     payload = {
         "text": text_phrase,
         "model": "timbre-v3.0",
-        "voice": "Nalini",
+        "voice": "Shivani",
         "language": "hi-IN",
         "speed": 1.0,
         "audio_config": {
