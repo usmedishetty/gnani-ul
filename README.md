@@ -3,8 +3,8 @@
 > *Built with Gnani AI Speech Models & Spec-Driven Development (SDD) via SYZYGY*
 
 [![Meta WhatsApp Cloud API](https://img.shields.io/badge/Meta%20Cloud%20API-v21.0%2B-25D366?logo=whatsapp&logoColor=white)](https://developers.facebook.com/docs/whatsapp/cloud-api)
-[![Gnani AI Prisma](https://img.shields.io/badge/Gnani%20Prisma-v2.5%20ASR-6366F1)](https://vachana.ai)
-[![Gnani AI Timbre](https://img.shields.io/badge/Gnani%20Timbre-v2.5%20TTS%20(beta)-EC4899)](https://vachana.ai)
+[![Gnani AI Prisma](https://img.shields.io/badge/Gnani%20Prisma-v3.0%20ASR-6366F1)](https://vachana.ai)
+[![Gnani AI Timbre](https://img.shields.io/badge/Gnani%20Timbre-v3.0%20TTS-EC4899)](https://vachana.ai)
 [![Framework: SYZYGY](https://img.shields.io/badge/Architecture-SYZYGY%20SDD%20v1.0-090D16)](https://github.com/atharveeee-netizen/syzygy)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -27,7 +27,7 @@ Instead of forcing users to download bloated catalog apps (Blinkit, Zepto) or fo
 ## ⚡ The 9 Concrete Engineering Breakthroughs
 
 1. **Multi-Modal "Burst Coalescing" Customer Intake:** Customers often send an 18s voice note, followed immediately by a 2s text correction ("mirch pao nahi aadha kilo"), and a chit photo. An 8-second adaptive debounce window in Redis merges all fragments into a single unified Provisional Parchi.
-2. **Dual-Modality "Speak & Show" Reply Cards:** Every customer card pairs an Interactive Button message with a synchronized 6-second native WhatsApp voice note (`voice: true` waveform via Gnani Timbre v2.5).
+2. **Dual-Modality "Speak & Show" Reply Cards:** Every customer card pairs an Interactive Button message with a synchronized 6-second native WhatsApp voice note (`voice: true` waveform via Gnani Timbre v3.0).
 3. **The Shopkeeper's "Zero-Typing Parchi":** Happy path takes 1 tap (1.5 seconds). Stock changes take a 5-second swipe-to-reply voice note parsed via Gnani Prisma with `previous_text` lexical priming and our Cart Diff Engine.
 4. **The "2-Strike Raw Audio Passthrough" (Zero-Drop Safety Net):** If an obscure local item has low ASR confidence ($<0.68$) after 1 retry, GallaVaani slices the exact 3-second audio snippet via FFmpeg, injects `[🎵 Voice Item #4 (Listen)]`, and forwards the raw audio directly to the shopkeeper's slip.
 5. **Four-Rail Bharat Settlement Engine:** Supports neighborhood Bahi-Khata (Store Credit) with 2-word handover tokens ("Aam-24"), doorstep dynamic NPCI-compliant UPI QR codes, pre-dispatch UPI intent links for new callers, and COD change calculation advisories.
@@ -45,9 +45,9 @@ CUSTOMER WHATSAPP                    GALLAVAANI ENGINE (FASTAPI + REDIS)        
 ─────────────────                    ───────────────────────────────────              ──────────────────────────
 [18s Voice Note]  ──(Meta Webhook)──► • Redis Fast-Ack (<150ms)
                                       • 8s Burst Coalescer Buffer
-                                      • Gnani Prisma v2.5 ASR (codemix)
+                                      • Gnani Prisma v3.0 ASR (codemix)
                                       • Python Kirana Normalizer
-                                      • Gnani Timbre v2.5 TTS
+                                      • Gnani Timbre v3.0 TTS
 [Interactive Card + 6s Voice] ◄────── • Waveform Packager ("voice": true)
 
 [Tap: ✅ Pakka Karo] ────────────────► • Lock Order #GV-204
@@ -76,7 +76,7 @@ GallaVaani's architecture strictly follows the **SYZYGY** Spec-Driven Developmen
 | Specification File | Purpose & Contents |
 | :--- | :--- |
 | [`.spec/PRD.md`](.spec/PRD.md) | **Product Requirements Document:** Problem statement, personas (Sunita Ji, Ramesh Seth, Raju), the 9 improvements, quantified SLAs, champion tool matrix, and MVP non-goals. |
-| [`.spec/TechSpec.md`](.spec/TechSpec.md) | **Technical Specification:** Runtime toolchain (Python 3.11, FastAPI, Redis 7.2, PostgreSQL 16), Meta Cloud API v21.0+ pipeline, Gnani AI models (Prisma v2.5, Timbre v2.5), and hardware tiers. |
+| [`.spec/TechSpec.md`](.spec/TechSpec.md) | **Technical Specification:** Runtime toolchain (Python 3.11, FastAPI, Redis 7.2, PostgreSQL 16), Meta Cloud API v21.0+ pipeline, Gnani AI models (Prisma v3.0, Timbre v3.0), and hardware tiers. |
 | [`.spec/Architecture.md`](.spec/Architecture.md) | **System Architecture:** Antonio Gulli's 66 Agentic Patterns via DeepSeek Harness (`dsh`), distributed Mermaid topology mesh, subagent definitions, and IPC contracts. |
 | [`.spec/AppFlow.md`](.spec/AppFlow.md) | **Application Flow & Failure Register:** Complete end-to-end user journeys, Finite State Machine (FSM), 5 hard invariants, and the 10-cluster failure handling matrix. |
 | [`.spec/Design.md`](.spec/Design.md) | **OpenDesign Contract:** Dark Obsidian tokens (`#090D16`), Outfit/Inter typography, spring physics, and WhatsApp template specifications (`customer_provisional_parchi`, etc.). |
@@ -92,8 +92,8 @@ GallaVaani uses Gnani AI's hosted speech services coupled with deterministic slo
 
 | Component | Model / Engine | Host / Endpoint | Role in GallaVaani |
 | :--- | :--- | :--- | :--- |
-| **Speech-to-Text (ASR)** | **Prisma v2.5** | `api.vachana.ai/v1/stt` | Transcribes noisy Hinglish/vernacular WhatsApp `.ogg` voice notes with store `keyterms` and `previous_text`. |
-| **Text-to-Speech (TTS)** | **Timbre v2.5 (beta)** | `api.vachana.ai/v1/tts/sse` | Synthesizes normalized Hindi readback voice notes (`Shivani`/`Avinash`) with `"voice": true` waveforms. |
+| **Speech-to-Text (ASR)** | **Prisma v3.0** | `api.vachana.ai/v1/stt` | Transcribes noisy Hinglish/vernacular WhatsApp `.ogg` voice notes with store `keyterms` and `previous_text`. |
+| **Text-to-Speech (TTS)** | **Timbre v3.0** | `api.vachana.ai/v1/tts/sse` | Synthesizes normalized Hindi readback voice notes (`Shivani`/`Avinash`) with `"voice": true` waveforms. |
 | **Unit Normalizer** | **Python Regex Engine** | In-Process / Zero Latency | Maps colloquial Indian quantities (`pao` $\rightarrow$ 250g, `sawa` $\rightarrow$ 1.25kg, `10-wali` $\rightarrow$ MRP 10) deterministically. |
 | **Reasoning & Diff** | **Gemini 2.5 Flash / Evon v3.3** | Structured Tool-Calling | Handles ambiguous free-form conversational corrections and merchant diff calculations *(supports self-hosted Evon v3.3 via vLLM)*. |
 
