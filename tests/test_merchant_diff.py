@@ -32,3 +32,4 @@ def test_diff_engine_item_swap_and_sub_approval():
     assert result.requires_customer_consent is True  # Brand swap requires customer consent
     assert any("pillsbury" in d.updated_item.normalized_sku_name.lower() for d in result.diffs if d.updated_item)
     assert result.final_total == Decimal("240.00")
+

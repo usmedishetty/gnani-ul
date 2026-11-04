@@ -48,3 +48,4 @@ class ParchiFormatter:
                 {"id": f"PAY_{cart.order_id}_V{cart.cart_version_id}", "title": "💳 Mode"}
             ]
         }
+

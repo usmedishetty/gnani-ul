@@ -35,3 +35,4 @@ def test_fsm_invariant_3_stale_cart_version_rejected():
     with pytest.raises(InvariantViolationError) as exc:
         fsm.confirm_by_customer(payload_version=1)
     assert "Invariant 3" in str(exc.value)
+

@@ -82,3 +82,4 @@ class GallaVaaniPipeline:
                 "total_ms": total_ms
             }
         }
+

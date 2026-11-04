@@ -18,3 +18,4 @@ def test_settlement_dynamic_upi_qr_generation():
     assert len(png_bytes) > 100
     # PNG header check: \x89PNG
     assert png_bytes[:4] == b"\x89PNG"
+

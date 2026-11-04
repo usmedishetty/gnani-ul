@@ -27,3 +27,4 @@ def test_pipeline_run_end_to_end_offline(sample_voice_wav_bytes):
 
     # Check reply text has WhatsApp formatting
     assert "Sharma Store" in result["reply_text"] or "Parchi" in result["reply_text"]
+

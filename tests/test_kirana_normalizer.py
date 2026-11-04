@@ -40,3 +40,4 @@ def test_normalizer_past_basket_resolution(mock_customer_history):
     tea_items = [i for i in res.items if "tata tea" in i.normalized_sku_name.lower() or "agni" in i.normalized_sku_name.lower()]
     assert len(tea_items) == 1
     assert tea_items[0].requested_quantity == Decimal("0.25")
+

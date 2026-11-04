@@ -18,3 +18,4 @@ def test_stt_whatsapp_ogg_supported(sample_whatsapp_ogg_bytes):
     
     assert isinstance(res, STTResponse)
     assert "record" in res.transcript.lower() or "test" in res.transcript.lower() or len(res.transcript) > 0
+

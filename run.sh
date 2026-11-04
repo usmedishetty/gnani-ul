@@ -12,3 +12,4 @@ case "$TASK" in
         python3 -m pytest -q -m "not live"
         ;;
 esac
+

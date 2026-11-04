@@ -96,3 +96,4 @@ class OrderFSM:
                 raise InvariantViolationError("Invariant 1 Violation: Cannot transition to CONFIRMED_PACKING without verified merchant approval.")
 
         self.status = target_status
+

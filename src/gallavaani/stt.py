@@ -97,3 +97,4 @@ class GnaniSTTClient:
             duration_sec=1.0,
             is_fallback=True
         )
+

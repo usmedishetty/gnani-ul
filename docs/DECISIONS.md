@@ -82,3 +82,4 @@
 - **Consequences:**
   - Developers and CI can run `run.bat test` thousands of times with 0 API cost and ~0.8s runtime.
   - Protects the live Gnani API quota while preserving full live end-to-end validation capability.
+

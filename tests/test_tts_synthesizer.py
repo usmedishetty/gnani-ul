@@ -19,3 +19,4 @@ def test_tts_offline_synthesis_returns_ogg_opus():
     assert res.output_format == "audio/ogg; codecs=opus"
     # Verify Ogg header signature 'OggS'
     assert res.audio_bytes[:4] == b"OggS"
+
